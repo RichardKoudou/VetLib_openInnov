@@ -67,21 +67,28 @@ const ChatbotWidget = () => {
         <div ref={chatBoxRef} style={styles.container}>
           <div style={styles.header}>🐾 VetLib Assistant</div>
           <div style={styles.chatBox}>
-            {messages.map((msg, i) => (
-              <div
-                key={i}
-                style={{
-                  ...styles.messageBubble,
-                  alignSelf: msg.sender === 'Moi' ? 'flex-end' : 'flex-start',
-                  backgroundColor: msg.sender === 'Moi' ? '#91D5BE' : '#f1f0f0',
-                  borderTopLeftRadius: msg.sender === 'Moi' ? 12 : 0,
-                  borderTopRightRadius: msg.sender === 'Moi' ? 0 : 12,
-                }}
-              >
-                <span style={styles.senderLabel}>{msg.sender}</span>
-                <span>{msg.text}</span>
+            {messages.length === 0 ? (
+              <div style={styles.emptyState}>
+                <span style={styles.dogEmoji}>🐶</span>
+                <p style={styles.emptyText}>Posez-moi une question !</p>
               </div>
-            ))}
+            ) : (
+              messages.map((msg, i) => (
+                <div
+                  key={i}
+                  style={{
+                    ...styles.messageBubble,
+                    alignSelf: msg.sender === 'Moi' ? 'flex-end' : 'flex-start',
+                    backgroundColor: msg.sender === 'Moi' ? '#91D5BE' : '#f1f0f0',
+                    borderTopLeftRadius: msg.sender === 'Moi' ? 12 : 0,
+                    borderTopRightRadius: msg.sender === 'Moi' ? 0 : 12,
+                  }}
+                >
+                  <span style={styles.senderLabel}>{msg.sender}</span>
+                  <span>{msg.text}</span>
+                </div>
+              ))
+            )}
           </div>
           <div style={styles.inputContainer}>
             <input
@@ -109,7 +116,7 @@ const styles = {
     bottom: 20,
     right: 20,
     width: 340,
-    maxHeight: 500,
+    height: 500, // fixe la hauteur pour éviter l'effet "saut"
     borderRadius: 20,
     boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
     fontFamily: '"Helvetica Neue", sans-serif',
@@ -194,6 +201,24 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  emptyState: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#aaa',
+    textAlign: 'center',
+    padding: 20,
+  },
+  dogEmoji: {
+    fontSize: 48,
+    marginBottom: 10,
+  },
+  emptyText: {
+    fontSize: 14,
+    color: '#888',
   },
 };
 
