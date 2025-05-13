@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const ChatbotWidget = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [isOpen, setIsOpen] = useState(false); // État pour contrôler l'affichage du chat
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -33,38 +34,51 @@ const ChatbotWidget = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.header}>🐾 VetLib Assistant</div>
-      <div style={styles.chatBox}>
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            style={{
-              ...styles.messageBubble,
-              alignSelf: msg.sender === 'Moi' ? 'flex-end' : 'flex-start',
-              backgroundColor: msg.sender === 'Moi' ? '#91D5BE' : '#f1f0f0',
-              borderTopLeftRadius: msg.sender === 'Moi' ? 12 : 0,
-              borderTopRightRadius: msg.sender === 'Moi' ? 0 : 12,
-            }}
-          >
-            <span style={styles.senderLabel}>{msg.sender}</span>
-            <span>{msg.text}</span>
+    <div>
+      {/* Icône qui permet d'afficher la boîte de chat */}
+      <div
+        style={styles.chatIcon}
+        onClick={() => setIsOpen(!isOpen)} // Toggle de l'état de la boîte de chat
+      >
+        🗨️
+      </div>
+
+      {isOpen && (
+        <div style={styles.container}>
+          <div style={styles.header}>🐾 VetLib Assistant</div>
+          <div style={styles.chatBox}>
+            {messages.map((msg, i) => (
+              <div
+                key={i}
+                style={{
+                  ...styles.messageBubble,
+                  alignSelf: msg.sender === 'Moi' ? 'flex-end' : 'flex-start',
+                  backgroundColor: msg.sender === 'Moi' ? '#91D5BE' : '#f1f0f0',
+                  borderTopLeftRadius: msg.sender === 'Moi' ? 12 : 0,
+                  borderTopRightRadius: msg.sender === 'Moi' ? 0 : 12,
+                }}
+              >
+                <span style={styles.senderLabel}>{msg.sender}</span>
+                <span>{msg.text}</span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div style={styles.inputContainer}>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-          placeholder="Posez votre question..."
-          style={styles.input}
-        />
-        <button onClick={sendMessage} style={styles.button}>
-          ➤
-        </button>
-      </div>
+          <div style={styles.inputContainer}>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+              placeholder="Posez votre question..."
+              style={styles.input}
+              aria-label="Entrez votre message ici" // Amélioration de l'accessibilité
+            />
+            <button onClick={sendMessage} style={styles.button}>
+              ➤
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -85,6 +99,7 @@ const styles = {
     zIndex: 1000,
     overflow: 'hidden',
     border: '1px solid #e6e6e6',
+    animation: 'fadeIn 0.3s ease', // Animation d'apparition
   },
   header: {
     backgroundColor: '#fafafa',
@@ -144,6 +159,18 @@ const styles = {
     cursor: 'pointer',
     borderRadius: 8,
     transition: 'background-color 0.2s ease',
+  },
+  chatIcon: {
+    position: 'fixed',
+    bottom: 20,
+    right: 20,
+    backgroundColor: '#4CAF50',
+    color: '#fff',
+    padding: 12,
+    borderRadius: '50%',
+    cursor: 'pointer',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+    zIndex: 2000,
   },
 };
 
