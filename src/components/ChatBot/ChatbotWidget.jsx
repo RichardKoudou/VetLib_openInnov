@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const ChatbotWidget = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const [isOpen, setIsOpen] = useState(false); // État pour contrôler l'affichage du chat
+  const [isOpen, setIsOpen] = useState(false);
+  const chatBoxRef = useRef(null);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -33,18 +34,37 @@ const ChatbotWidget = () => {
     setInput('');
   };
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (chatBoxRef.current && !chatBoxRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
-    <div>
-      {/* Icône qui permet d'afficher la boîte de chat */}
-      <div
-        style={styles.chatIcon}
-        onClick={() => setIsOpen(!isOpen)} // Toggle de l'état de la boîte de chat
-      >
-        🗨️
-      </div>
+    <>
+      {!isOpen && (
+        <div
+          onClick={() => setIsOpen(true)}
+          style={styles.chatIcon}
+        >
+          💬
+        </div>
+      )}
 
       {isOpen && (
-        <div style={styles.container}>
+        <div ref={chatBoxRef} style={styles.container}>
           <div style={styles.header}>🐾 VetLib Assistant</div>
           <div style={styles.chatBox}>
             {messages.map((msg, i) => (
@@ -71,7 +91,7 @@ const ChatbotWidget = () => {
               onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
               placeholder="Posez votre question..."
               style={styles.input}
-              aria-label="Entrez votre message ici" // Amélioration de l'accessibilité
+              autoFocus
             />
             <button onClick={sendMessage} style={styles.button}>
               ➤
@@ -79,7 +99,7 @@ const ChatbotWidget = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
@@ -99,7 +119,6 @@ const styles = {
     zIndex: 1000,
     overflow: 'hidden',
     border: '1px solid #e6e6e6',
-    animation: 'fadeIn 0.3s ease', // Animation d'apparition
   },
   header: {
     backgroundColor: '#fafafa',
@@ -164,13 +183,17 @@ const styles = {
     position: 'fixed',
     bottom: 20,
     right: 20,
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#91D5BE',
     color: '#fff',
-    padding: 12,
+    fontSize: 24,
+    padding: 14,
     borderRadius: '50%',
     cursor: 'pointer',
     boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
     zIndex: 2000,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 };
 
