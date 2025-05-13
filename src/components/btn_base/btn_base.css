@@ -1,0 +1,18 @@
+button.btn_base {
+    background-color: #91D5BE;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 10px;
+    width: max-content;
+    margin-left: 2.3rem;
+    transition: all 0.3s;
+    font-weight: bold
+}
+
+button.btn_base:hover {
+    background-color: #66BFA5;
+    transform: scale(1.05);
+}

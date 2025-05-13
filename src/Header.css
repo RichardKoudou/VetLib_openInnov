@@ -1,0 +1,30 @@
+.opoil-header {
+    background-color: #91D5BE;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+    height: 10vh;
+    position: relative;
+    width: 100%;
+}
+
+.opoil-header h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.burger-menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 0px 30px;
+}
+
+.burger-menu div {
+    width: 46px;
+    height: 8px;
+    background-color: black;
+    margin: 3px;
+}
