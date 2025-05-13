@@ -17,7 +17,7 @@ function Header({ user }) {
             <header className="opoil-header">
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <img src={logo} alt="Logo O'Poil" className="max-w-20 ml-3 hover:cursor-pointer" onClick={() => navigate('/')}/>
-                    <h1 className="pl-8">O'Poil</h1>
+                    <h1 className="pl-8">VetLib</h1>
                 </div>
                 <div className="burger-menu" onClick={toggleMenu}>
                     <div></div>

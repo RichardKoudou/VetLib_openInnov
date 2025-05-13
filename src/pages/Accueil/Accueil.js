@@ -8,7 +8,7 @@ function Accueil({user}) {
     return (
         <main className="flex justify-center flex-col items-center">
             <div className='center-col'>
-                {token && user ? <h1 className="text-4xl my-5">Bienvenue, {user.firstName}</h1> : <h1 className="text-4xl my-5">Bienvenue sur O'Poil</h1>}
+                {token && user ? <h1 className="text-4xl my-5">Bienvenue, {user.firstName}</h1> : <h1 className="text-4xl my-5">Bienvenue sur VetLib</h1>}
                 <div className='div-img-Accueil'>
                     <img
                         src='https://www.veterinaire-monveto.com/wp-content/uploads/2023/11/TRAME-CLINIQUE-HEADER2-2.png'
@@ -18,7 +18,7 @@ function Accueil({user}) {
             </div>
             <div className='center-col'>
                 <div className='p-Accueil'>
-                Que vous soyez un propriétaire d'animal de compagnie à la recherche de soins experts ou un vétérinaire souhaitant proposer vos services, O'Poil est là pour vous faciliter la tâche.    
+                Que vous soyez un propriétaire d'animal de compagnie à la recherche de soins experts ou un vétérinaire souhaitant proposer vos services, VetLib est là pour vous faciliter la tâche.    
                 </div>
                 {token ? (
                     <>

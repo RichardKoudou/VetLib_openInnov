@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Accueil from "./pages/Accueil/Accueil";
+import Footer from "./Footer";
 import {
     BrowserRouter as Router, Navigate,
     Route,
@@ -14,6 +15,7 @@ import PrivateRoute from "./components/Auth/PrivateRoute";
 import {UserContext} from "./Contexts/UserContext";
 import {useContext} from "react";
 import Create_Demande from "./pages/Create_Demande/Create_Demande";
+import ChatbotWidget from "./components/ChatBot/ChatbotWidget";
 
 function App() {
     const { user, loading, error } = useContext(UserContext);
@@ -36,12 +38,14 @@ function App() {
                     <Route exact path="/" element={<Accueil user={user} />} />
                     <Route path="/inscription" element={<Inscription />} />
                     <Route path="/connexion" element={<Login />} />
+                    <Route path="/chatbot" element={<ChatbotWidget />} />
                     <Route path="/compte" element={<PrivateRoute element={<Profile user={user} />} />} />
                     <Route path="/demandes/list" element={user && user.role === 'ROLE_USER' ? <PrivateRoute element={<Mes_Demande user={user} />} /> : <Navigate to="/" />} />
                     <Route exact path="/posts" element={user && user.role === 'ROLE_VETO' ? <PrivateRoute element={<PostList user={user} finished={false}/>} /> : <Navigate to='/'/>} />
                     <Route exact path="/advices" element={user && user.role === 'ROLE_VETO' ? <PrivateRoute element={<PostList user={user} finished={true}/>} /> : <Navigate to='/'/>} />
                     <Route path="/demandes/create" element={user && user.role === 'ROLE_USER' ? <PrivateRoute element={<Create_Demande user={user} />} /> : <Navigate to="/" />} />
                 </Routes>
+                <Footer user={user} />
             </div>
             : null}
         </Router>
