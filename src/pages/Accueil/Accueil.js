@@ -6,7 +6,7 @@ function Accueil({user}) {
     const token = Cookies.get("token");
 
     return (
-        <main className="flex justify-center items-center min-h-screen p-8 bg-gray-50">
+        <main className="flex justify-center items-center min-h-screen p-8 pb-20 sm:pb-8 bg-gray-50">
             <div className="container mx-auto flex flex-col lg:flex-row items-center gap-16">
                 <div className="flex-1 order-2 lg:order-1">
                     {token && user ? 
@@ -20,7 +20,7 @@ function Accueil({user}) {
                             Nous simplifions la recherche de soins vétérinaires de qualité pour vos compagnons.
                         </p>
                     </div>
-                    <div className="flex justify-start">
+                    <div className="flex justify-start mb-16 sm:mb-0">
                         {token ? (
                             <>
                                 {user && user.role === 'ROLE_USER' && 

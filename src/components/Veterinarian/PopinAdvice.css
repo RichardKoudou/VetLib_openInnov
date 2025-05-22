@@ -1,0 +1,11 @@
+@media (max-width: 640px) {
+    .popin-content {
+        width: 95%;
+        margin: 10px;
+        padding: 1rem;
+    }
+
+    .popin-textarea {
+        height: 120px;
+    }
+}

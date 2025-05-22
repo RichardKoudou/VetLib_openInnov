@@ -68,7 +68,7 @@ function AnimalForm() {
     }, [user, token]);
 
     return (
-        <div className='flex flex-col w-1/2'>
+        <div className='flex flex-col w-full pb-20 sm:pb-8'>
             <form onSubmit={handleSubmit} className="ml-4 max-w-md">
                 <div className="form-group mb-4">
                     <label htmlFor="species" className="block text-gray-700">Espèce:</label>
@@ -86,16 +86,16 @@ function AnimalForm() {
                 {message && <p className="mt-4 text-red-500">{message}</p>}
             </form>
             {user && user.role === 'ROLE_USER' && animals.length > 0 && (
-                <div className="mt-8 w-full max-w-md">
-                    <h2 className="text-2xl text-center">Mes Animaux</h2>
-                    <ul className="mt-2">
+                <div className="mt-8 w-full">
+                    <h2 className="text-2xl text-center mb-4">Mes Animaux</h2>
+                    <ul className="space-y-3 mb-8">
                         {animals.map(animal => (
                             <li key={animal.id}
-                                className="mb-2 w-11/12 ml-4 flex justify-between items-center p-2 border border-gray-300 rounded-md">
+                                className="flex justify-between items-center p-3 border border-gray-300 rounded-md bg-white shadow-sm">
                                 <p><strong>Espèce:</strong> {animal.species}</p>
                                 <button
                                     onClick={() => onDeleteAnimal(animal.id)}
-                                    className="bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300">
+                                    className="bg-red-500 text-white p-2 rounded-md hover:bg-red-600">
                                     <i className='fa fa-trash'></i>
                                 </button>
                             </li>

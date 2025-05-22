@@ -55,58 +55,44 @@ function SquareCard({ id, title, description, user, finished, advice }) {
     };
 
     return (
-        <>
-            <div
-                className="relative p-4 m-4 w-72 h-72 shadow-xl rounded-lg border border-transparent hover:border-blue-400 hover:cursor-pointer transition-all"
-                onClick={handleOpenPostDetails}>
-
-                <h2 className="text-xl text-center font-semibold mb-2">{title}</h2>
-                <p className="text-gray-600 break-words">{truncatedDescription}</p>
-                {!finished ?
+        <div className="flex flex-col h-full p-4 bg-white rounded-lg shadow-lg border border-transparent hover:border-blue-400">
+            <h2 className="text-xl text-center font-semibold mb-4">{title}</h2>
+            <p className="text-gray-600 break-words flex-grow mb-4">{truncatedDescription}</p>
+            <div className="mt-auto w-full">
+                {!finished ? (
+                    <button
+                        onClick={(e) => { handleOpenPopin(e); e.stopPropagation(); }}
+                        className="action-button w-full text-center">
+                        Donner un avis
+                    </button>
+                ) : (
                     <>
-                        <button
-                            onClick={(e) => { handleOpenPopin(e); e.stopPropagation(); }}
-                            className="action-button absolute bottom-4 right-4">
-                            Donner un avis
-                        </button>
-                        <PopinAdvice
-                            advice={null}
-                            isOpen={isPopinOpen}
-                            onClose={handleClosePopin}
-                            onSubmit={handleSubmitAdvice}
-                        />
-                    </>
-                    :
-                    <>
-                        {advice ?
-                            <>
-                                <button
-                                    onClick={(e) => { handleOpenPopin(e); e.stopPropagation(); }}
-                                    className="action-button absolute bottom-4 right-4">
-                                    Modifier l'avis
-                                </button>
-                                <PopinAdvice
-                                    advice={advice}
-                                    isOpen={isPopinOpen}
-                                    onClose={handleClosePopin}
-                                    onSubmit={handleSubmitAdvice}
-                                />
-                            </>
-
-                            :
-                            <div className="absolute bottom-4 right-4 bg-red-500 text-white font-bold py-2 px-4 rounded">
+                        {advice ? (
+                            <button
+                                onClick={(e) => { handleOpenPopin(e); e.stopPropagation(); }}
+                                className="action-button w-full text-center">
+                                Modifier l'avis
+                            </button>
+                        ) : (
+                            <div className="w-full text-center py-2 px-4 bg-red-500 text-white rounded">
                                 Avis non donné
                             </div>
-                        }
+                        )}
                     </>
-                }
+                )}
             </div>
+            <PopinAdvice
+                advice={null}
+                isOpen={isPopinOpen}
+                onClose={handleClosePopin}
+                onSubmit={handleSubmitAdvice}
+            />
             <PostDetails
                 isOpen={isPostDetailsOpen}
                 onClose={handleClosePostDetails}
                 post={{ title, description, advice }}
             />
-        </>
+        </div>
     );
 }
 

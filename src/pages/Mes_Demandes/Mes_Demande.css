@@ -88,3 +88,36 @@
     transform: translateY(-2px);
     box-shadow: var(--shadow);
 }
+
+@media (max-width: 768px) {
+    .demands-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .demands-table thead {
+        font-size: 14px;
+    }
+
+    .demands-table td, 
+    .demands-table th {
+        padding: 0.75rem;
+    }
+
+    .demands-table .action-button {
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .demands-table thead {
+        font-size: 12px;
+    }
+
+    .demands-table td, 
+    .demands-table th {
+        padding: 0.5rem;
+    }
+}

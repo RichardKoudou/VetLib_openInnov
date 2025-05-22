@@ -49,10 +49,10 @@ function Inscription() {
     };
 
     return (
-        <main className="pt-[7%] pb-8 flex flex-col items-center justify-center min-h-screen">
-            <div className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-md mb-8">
-                <h1 className="text-3xl font-semibold text-center mb-6">S'inscrire</h1>
-                <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
+        <main className="pt-[7%] pb-8 flex flex-col items-center justify-center min-h-screen px-4">
+            <div className="w-full max-w-4xl bg-white p-4 sm:p-8 rounded-lg shadow-md mb-8">
+                <h1 className="text-2xl sm:text-3xl font-semibold text-center mb-6">S'inscrire</h1>
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     <div className="space-y-4">
                         <div className="form-group">
                             <label htmlFor="first_name" className="block text-gray-700">Prénom:</label>
