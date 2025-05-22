@@ -1,5 +1,5 @@
 import './Header.css';
-import logo from './img/logo.png';
+import vetlib from './img/vetlib.png';
 import Navigation from './components/Navigation/Navigation';
 import { useState } from 'react';
 import {useNavigate} from "react-router-dom";
@@ -16,8 +16,7 @@ function Header({ user }) {
         <>
             <header className="opoil-header">
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <img src={logo} alt="Logo O'Poil" className="max-w-20 ml-3 hover:cursor-pointer" onClick={() => navigate('/')}/>
-                    <h1 className="pl-8">VetLib</h1>
+                    <img src={vetlib} alt="Logo O'Poil" className="max-w-16 ml-3 hover:cursor-pointer" onClick={() => navigate('/')}/>
                 </div>
                 <div className="burger-menu" onClick={toggleMenu}>
                     <div></div>

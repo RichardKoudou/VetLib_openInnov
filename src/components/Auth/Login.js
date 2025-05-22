@@ -38,36 +38,44 @@ function Login() {
     };
 
     return (
-        <main className="pt-28 flex flex-col items-center justify-center">
-            <h1 className="text-4xl mb-6">Se connecter</h1>
-            <form onSubmit={handleSubmit} className="w-full max-w-md">
-                <div className="form-group mb-4">
-                    <label htmlFor="email" className="block text-gray-700">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300"
-                    />
-                </div>
-                <div className="form-group mb-4">
-                    <label htmlFor="password" className="block text-gray-700">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300"
-                    />
-                </div>
-                <button type="submit" className="m-0 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">Login</button>
-            </form>
-            {message && <p className="mt-4 text-red-500">{message}</p>}
+        <main className="flex justify-center items-center min-h-screen p-8 bg-gray-50">
+            <div className="card w-full max-w-md p-8">
+                <h1 className="welcome-title text-center mb-8">Se connecter</h1>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="form-group">
+                        <label htmlFor="email" className="block text-sm font-medium mb-2">Email:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="w-full p-3 border border-gray-200 rounded-md focus:outline-none focus:border-primary transition-colors"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password" className="block text-sm font-medium mb-2">Mot de passe:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                            className="w-full p-3 border border-gray-200 rounded-md focus:outline-none focus:border-primary transition-colors"
+                        />
+                    </div>
+                    <button type="submit" className="action-button w-full">Se connecter</button>
+                </form>
+                {message && <p className="mt-4 text-red-500 text-center">{message}</p>}
+                <p className="mt-4 text-center text-gray-600">
+                    Pas encore de compte ? 
+                    <a href="/inscription" className="ml-1 text-blue-500 hover:text-blue-600">
+                        Inscrivez-vous
+                    </a>
+                </p>
+            </div>
         </main>
     );
 }

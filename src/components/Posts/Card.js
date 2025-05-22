@@ -57,7 +57,7 @@ function SquareCard({ id, title, description, user, finished, advice }) {
     return (
         <>
             <div
-                className="relative p-4 m-4 w-72 h-72 shadow-xl rounded-lg border border-transparent hover:border-emerald-400 hover:cursor-pointer transition-all"
+                className="relative p-4 m-4 w-72 h-72 shadow-xl rounded-lg border border-transparent hover:border-blue-400 hover:cursor-pointer transition-all"
                 onClick={handleOpenPostDetails}>
 
                 <h2 className="text-xl text-center font-semibold mb-2">{title}</h2>
@@ -66,7 +66,7 @@ function SquareCard({ id, title, description, user, finished, advice }) {
                     <>
                         <button
                             onClick={(e) => { handleOpenPopin(e); e.stopPropagation(); }}
-                            className="absolute bottom-4 transition-all right-4 bg-emerald-500 hover:bg-emerald-400 hover:scale-105 text-white font-bold py-2 px-4 rounded">
+                            className="action-button absolute bottom-4 right-4">
                             Donner un avis
                         </button>
                         <PopinAdvice
@@ -82,7 +82,7 @@ function SquareCard({ id, title, description, user, finished, advice }) {
                             <>
                                 <button
                                     onClick={(e) => { handleOpenPopin(e); e.stopPropagation(); }}
-                                    className="absolute bottom-4 transition-all right-4 bg-emerald-500 hover:bg-emerald-400 hover:scale-105 text-white font-bold py-2 px-4 rounded">
+                                    className="action-button absolute bottom-4 right-4">
                                     Modifier l'avis
                                 </button>
                                 <PopinAdvice

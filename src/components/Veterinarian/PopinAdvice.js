@@ -27,7 +27,7 @@ function PopinAdvice({ advice, isOpen, onClose, onSubmit }) {
                         required
                         className="w-full h-32 p-2 border border-gray-300 rounded mb-4"
                     />
-                    <button type="submit" className="bg-emerald-500 text-white py-2 px-4 rounded hover:bg-emerald-400">Soumettre</button>
+                    <button type="submit" className="action-button">Soumettre</button>
                 </form>
             </div>
         </div>

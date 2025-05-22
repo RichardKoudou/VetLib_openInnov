@@ -6,33 +6,42 @@ function Accueil({user}) {
     const token = Cookies.get("token");
 
     return (
-        <main className="flex justify-center flex-col items-center">
-            <div className='center-col'>
-                {token && user ? <h1 className="text-4xl my-5">Bienvenue, {user.firstName}</h1> : <h1 className="text-4xl my-5">Bienvenue sur VetLib</h1>}
-                <div className='div-img-Accueil'>
-                    <img
-                        src='https://www.veterinaire-monveto.com/wp-content/uploads/2023/11/TRAME-CLINIQUE-HEADER2-2.png'
-                        alt="Image d'un vétérinaire avec un chien à ses côtés"
-                    />
+        <main className="flex justify-center items-center min-h-screen p-8 bg-gray-50">
+            <div className="container mx-auto flex flex-col lg:flex-row items-center gap-16">
+                <div className="flex-1 order-2 lg:order-1">
+                    {token && user ? 
+                        <h1 className="welcome-title">Bienvenue, {user.firstName}</h1> 
+                        : 
+                        <h1 className="welcome-title">Bienvenue sur VetLib</h1>
+                    }
+                    <div className='p-Accueil'>
+                        <p>
+                            Découvrez VetLib, votre plateforme de mise en relation entre propriétaires d'animaux et vétérinaires. 
+                            Nous simplifions la recherche de soins vétérinaires de qualité pour vos compagnons.
+                        </p>
+                    </div>
+                    <div className="flex justify-start">
+                        {token ? (
+                            <>
+                                {user && user.role === 'ROLE_USER' && 
+                                    <BtnBase className="action-button" nav='/demandes/list' name='Voir mes demandes' />}
+                                {user && user.role === 'ROLE_VETO' && 
+                                    <BtnBase className="action-button" nav='/posts' name='Voir les demandes' />}
+                            </>
+                        ) : (
+                            <BtnBase className="action-button" nav='/inscription' name='Rejoignez-nous' />
+                        )}
+                    </div>
                 </div>
-            </div>
-            <div className='center-col'>
-                <div className='p-Accueil'>
-                Que vous soyez un propriétaire d'animal de compagnie à la recherche de soins experts ou un vétérinaire souhaitant proposer vos services, VetLib est là pour vous faciliter la tâche.    
+                <div className="flex-1 order-1 lg:order-2">
+                    <div className='div-img-Accueil'>
+                        <img
+                            src='https://storage.letudiant.fr/mediatheque/letudiant/7/3/2747473-le-veterinaire-diagnostique-et-traite-les-maladies-des-animaux-original.jpg'
+                            alt="Un vétérinaire prenant soin d'un animal"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
                 </div>
-                {token ? (
-                    <>
-                        {user && user.role === 'ROLE_USER' ? 
-                            <BtnBase nav='/demandes/list' name='Voir mes demandes' /> 
-                        : null}
-
-                        {user && user.role === 'ROLE_VETO' ? 
-                            <BtnBase nav='/posts' name='Voir les demandes' />
-                        : null}
-                    </>
-                ) : (
-                    <BtnBase nav='/inscription' name='Inscription' />
-                )}
             </div>
         </main>
     );

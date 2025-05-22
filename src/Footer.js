@@ -5,22 +5,15 @@ import { FaFacebookF, FaXTwitter, FaInstagram } from 'react-icons/fa6';
 function Footer() {
   return (
     <>
-      {/* Espacement pour ne pas masquer les éléments au-dessus */}
-      <div style={{ height: '80px' }}></div>
-
       <footer style={styles.footer}>
         <div style={styles.footerContent}>
           <div style={styles.footerLeft}>
-            <p>&copy; 2025 VetLib. Tous droits réservés.</p>
-            <p>
-              Contactez-nous :{' '}
-              <a href="mailto:contact@vetlib.com" style={styles.email}>
-                contact@vetlib.com
-              </a>
+            <p>&copy; 2025 VetLib. Tous droits réservés. | 
+              <a href="mailto:contact@vetlib.com" style={styles.email}> contact@vetlib.com</a>
             </p>
           </div>
-          <div style={styles.footerRight}>
-            <p>Suivez-nous :</p>
+          <div style={styles.socialContainer}>
+            <span>Suivez-nous :</span>
             <div style={styles.socialLinks}>
               <a href="https://www.facebook.com" target="_blank" rel="noreferrer" style={styles.icon}>
                 <FaFacebookF />
@@ -34,8 +27,6 @@ function Footer() {
             </div>
           </div>
         </div>
-
-        {/* Chatbot intégré dans le footer */}
         <ChatbotWidget />
       </footer>
     </>
@@ -44,60 +35,52 @@ function Footer() {
 
 const styles = {
   footer: {
-    backgroundColor: '#91D5BE',
-    color: '#222',
-    padding: '20px 40px',
-    borderTop: '1px solid #e0e0e0',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
+    backgroundColor: 'var(--background-color)',
+    color: 'var(--text-color)',
+    padding: '10px 20px',
+    borderTop: '1px solid var(--hover-bg)',
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
     width: '100%',
-    zIndex: 100,
-    position: 'relative',
+    zIndex: 1000,
+    boxShadow: 'var(--shadow)',
   },
   footerContent: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    flexWrap: 'wrap',
-    width: '100%',
+    alignItems: 'center',
     maxWidth: '1200px',
-    gap: '20px',
+    margin: '0 auto',
   },
   footerLeft: {
-    fontSize: '14px',
-    lineHeight: '1.6',
-    flex: 1,
-    minWidth: '250px',
+    fontSize: '13px',
   },
-  footerRight: {
-    fontSize: '14px',
-    textAlign: 'right',
-    flex: 1,
-    minWidth: '250px',
-  },
-  email: {
-    color: '#222',
-    textDecoration: 'underline',
+  socialContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    fontSize: '13px',
   },
   socialLinks: {
     display: 'flex',
-    gap: '12px',
-    marginTop: '8px',
-    justifyContent: 'flex-end',
+    gap: '8px',
+    alignItems: 'center',
   },
   icon: {
-    color: '#fff',
-    backgroundColor: '#555',
-    borderRadius: '50%',
-    fontSize: '16px',
-    padding: '8px',
+    color: 'var(--background-color)',
+    backgroundColor: 'var(--primary-color)',
+    borderRadius: 'var(--border-radius)',
+    padding: '6px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     textDecoration: 'none',
-    transition: 'background-color 0.3s ease',
+    transition: 'var(--transition)',
+  },
+  email: {
+    color: '#222',
+    textDecoration: 'underline',
   },
 };
 

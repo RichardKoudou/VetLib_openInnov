@@ -79,7 +79,7 @@ const ChatbotWidget = () => {
                   style={{
                     ...styles.messageBubble,
                     alignSelf: msg.sender === 'Moi' ? 'flex-end' : 'flex-start',
-                    backgroundColor: msg.sender === 'Moi' ? '#91D5BE' : '#f1f0f0',
+                    backgroundColor: msg.sender === 'Moi' ? '#007BFF' : '#f1f0f0',
                     borderTopLeftRadius: msg.sender === 'Moi' ? 12 : 0,
                     borderTopRightRadius: msg.sender === 'Moi' ? 0 : 12,
                   }}
@@ -177,7 +177,7 @@ const styles = {
     outline: 'none',
   },
   button: {
-    backgroundColor: '#91D5BE',
+    backgroundColor: '#007BFF',
     color: '#fff',
     border: 'none',
     padding: '0 16px',
@@ -188,12 +188,12 @@ const styles = {
   },
   chatIcon: {
     position: 'fixed',
-    bottom: 20,
-    right: 20,
-    backgroundColor: '#91D5BE',
+    bottom: 50,
+    right: 8,
+    backgroundColor: '#007BFF',
     color: '#fff',
     fontSize: 24,
-    padding: 14,
+    padding: 8,
     borderRadius: '50%',
     cursor: 'pointer',
     boxShadow: '0 4px 8px rgba(0,0,0,0.2)',

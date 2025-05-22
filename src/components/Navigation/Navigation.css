@@ -1,12 +1,13 @@
 .menu-nav-div {
     position: fixed;
-    width: 35rem;
+    width: 280px;
     height: 100%;
-    right: -35rem;
+    right: -300px;
     top: 0;
     visibility: hidden;
-    transition: all 0.7s;
+    transition: all 0.3s ease-in-out;
     z-index: 1000;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
 }
 
 .menu-nav {
@@ -14,24 +15,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #91D5BE;
+    background-color: #fff;
     width: 100%;
     height: 100%;
     right: 0;
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 
-
-
-.choice{
-    color: black;
-    font-size:xx-large;
-    font-weight: bolder;
-    text-decoration:none;
+.choice {
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    width: 80%;
+    text-align: center;
 }
 
-.choice-active{
-    color: white;
+.choice:hover {
+    background-color: #f0f4f7;
+    transform: translateX(5px);
+}
+
+.choice-active {
+    color: #007bff;
+    background-color: #e8f0fe;
 }
 
 ul {
@@ -39,47 +49,36 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 2rem;
+    width: 100%;
+    padding: 0;
 }
 
 li {
-    padding: 10px 0px;
-}
-
-
-.CloseOut-Menu-nav{
-    z-index: 10;
+    padding: 8px 0;
     width: 100%;
-    height: 100%;
-    position: fixed;
-    right: 0;
-    transition: all 1s;
-    top: 0;
-    cursor: pointer;
-    right: -100%;
+    display: flex;
+    justify-content: center;
 }
-
-
 
 .burger-menu-close {
-    display: flex;
-    flex-direction: column;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    justify-content: center;
+    display: flex;
     align-items: center;
-    position: relative; 
-    left: -40%;
-    top: 10px;
-    height: 3rem;
-    z-index: 1001;
+    justify-content: center;
 }
 
 .burger-menu-close div {
-    position: absolute; 
-    width: 46px;
-    height: 8px;
-    margin: 3px;
-    background-color: black;
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: #333;
+    transition: all 0.3s ease;
 }
 
 .burger-menu-close div.div1 {
@@ -88,4 +87,15 @@ li {
 
 .burger-menu-close div.div2 {
     transform: rotate(-45deg);
+}
+
+.CloseOut-Menu-nav {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 900;
 }

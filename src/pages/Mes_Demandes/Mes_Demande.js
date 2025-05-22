@@ -47,63 +47,56 @@ function Mes_Demande({ user }) {
     };
 
     return (
-        <main className="flex flex-col">
-            <div className='text-4xl mt-2 text-center'>
-                <h1>Mes demandes</h1>
-            </div>
-            <BtnBase nav='/demandes/create' name='Créer une demande' />
+        <div className="demands-container">
+            <h1 className="demands-title">Mes demandes</h1>
+            <BtnBase className="action-button" nav='/demandes/create' name='Créer une demande' />
 
-            <table className="bg-[#91D5BE] my-5">
+            <table className="demands-table">
                 <thead>
-                <tr className="rounded-tl">
-                    <th className="py-5 rounded-tl">Date</th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Modification</th>
-                    <th>Réponse</th>
-                    <th>Avis</th>
-                </tr>
+                    <tr>
+                        <th>Date</th>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Modification</th>
+                        <th>Réponse</th>
+                        <th>Avis</th>
+                    </tr>
                 </thead>
                 <tbody>
-                {posts.map(post => (
-                    <tr key={post.id} className='bg-white'>
-                        <td className=" py-5">{format(new Date(post.createdAt), 'd/M/y')}</td>
-                        <td>{post.title}</td>
-                        <td>{post.description}</td>
-                        <td className="text-center">
-                            {post.advice_id ? (
-                                <span className="font-bold text-red-500">✖</span>
-                            ) : (
-                                <button className="bg-[#91D5BE] p-2 px-4 rounded" onClick={() => openPopup(post)}>Modifier</button>
-                            )}
-                        </td>
-                        <td className="flex items-center justify-center py-5">
-                            {post.adviceId ? (
-                                <div className="bg-emerald-500 p-2 px-4 rounded">
-                                    <i className="fa fa-check"></i>
-                                </div>
-                            ) : (
-                                <span className="font-bold text-red-500">✖</span>
-                            )}
-                        </td>
-                        <td>
-                            {post.advice ?
-                                <p>{post.advice.comment}</p>
-                                :
-                                null
-                            }
-                        </td>
-                    </tr>
-                ))}
+                    {posts.map(post => (
+                        <tr key={post.id}>
+                            <td>{format(new Date(post.createdAt), 'd/M/y')}</td>
+                            <td>{post.title}</td>
+                            <td>{post.description}</td>
+                            <td className="text-center">
+                                {post.advice_id ? (
+                                    <span className="text-red-500">✖</span>
+                                ) : (
+                                    <button className="edit-button" onClick={() => openPopup(post)}>
+                                        Modifier
+                                    </button>
+                                )}
+                            </td>
+                            <td className="text-center">
+                                {post.adviceId ? (
+                                    <span className="text-green-500">✓</span>
+                                ) : (
+                                    <span className="text-red-500">✖</span>
+                                )}
+                            </td>
+                            <td>{post.advice?.comment}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
+
             <PopinEditDemande
                 post={currentPost}
                 isOpen={isPopupOpen}
                 onClose={closePopup}
                 onSave={savePost}
             />
-        </main>
+        </div>
     );
 }
 
